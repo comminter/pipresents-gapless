@@ -124,20 +124,6 @@ class PiPresents(object):
         self.mon.log(self,'\n'+check_output(["omxplayer", "-v"]))
         self.mon.log(self,'\nGPU Memory: '+check_output(["vcgencmd", "get_mem", "gpu"]))
 
-        if os.geteuid() == 0:
-            print 'Do not run Pi Presents with sudo'
-            self.mon.log(self,'Do not run Pi Presents with sudo')
-            self.mon.finish()
-            sys.exit(102)
-
-        
-        if "DESKTOP_SESSION" not in os.environ:
-            print 'Pi Presents must be run from the Desktop'
-            self.mon.log(self,'Pi Presents must be run from the Desktop')
-            self.mon.finish()
-            sys.exit(102)
-        else:
-            self.mon.log(self,'Desktop is '+ os.environ['DESKTOP_SESSION'])
         
         # optional other classes used
         self.root=None
